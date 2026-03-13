@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import de.wiedel.mario.Mario;
 import de.wiedel.mario.config.GameConfig;
+import de.wiedel.mario.scenes.Hud;
 
 public class PlayScreen implements Screen {
 
@@ -22,17 +23,15 @@ public class PlayScreen implements Screen {
     private OrthographicCamera gameCam;
     private Viewport gameViewport;
 
-    // vorübergehend
-    private Texture texture;
+    private Hud hud;
 
     public PlayScreen(Mario game){
         this.game = game;
         batch = game.getBatch();
         gameCam = new OrthographicCamera();
-        gameViewport = new FitViewport(800, 480, gameCam);
+        gameViewport = new FitViewport(GameConfig.V_WIDTH, GameConfig.V_HEIGHT, gameCam);
 
-        // vorübergehend
-        texture = new Texture("libgdx.png");
+        hud = new Hud(batch);
     }
 
     @Override
@@ -43,10 +42,9 @@ public class PlayScreen implements Screen {
     @Override
     public void render(float delta) {
         ScreenUtils.clear(GameConfig.CORNFLOWER_BLUE);
-        batch.setProjectionMatrix(gameCam.combined);
-        batch.begin();
-        batch.draw(texture, 0, 0);
-        batch.end();
+
+        batch.setProjectionMatrix(hud.getStage().getCamera().combined);
+        hud.getStage().draw();
     }
 
     @Override
