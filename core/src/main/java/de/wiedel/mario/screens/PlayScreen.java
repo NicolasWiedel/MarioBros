@@ -1,5 +1,6 @@
 package de.wiedel.mario.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -41,7 +42,8 @@ public class PlayScreen implements Screen {
 
         map = assetManager.get(AssetDescriptors.LEVEL_1);
         mapRenderer = new OrthogonalTiledMapRenderer(map);
-        gameCam.position.set(gameViewport.getScreenWidth() / 2f, gameViewport.getScreenHeight() / 2f, 0);
+        gameCam.position.set(gameViewport.getWorldWidth() / 2f, gameViewport.getWorldHeight() / 2f, 0);
+        System.out.println(gameViewport.getWorldWidth());
     }
 
     @Override
@@ -49,9 +51,27 @@ public class PlayScreen implements Screen {
 
     }
 
+    private void handleInput(float delta){
+        // vorübergehend
+        if (Gdx.input.isTouched()){
+            gameCam.position.x += 100 * delta;
+        }
+    }
+
+    private void update(float delta){
+        handleInput(delta);
+
+        gameCam.update();
+        mapRenderer.setView(gameCam);
+    }
+
     @Override
     public void render(float delta) {
+        update(delta);
+
         ScreenUtils.clear(GameConfig.CORNFLOWER_BLUE);
+
+        mapRenderer.render();
 
         batch.setProjectionMatrix(hud.getStage().getCamera().combined);
         hud.getStage().draw();
