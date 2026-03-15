@@ -95,6 +95,6 @@ public class LoadingScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        defaultFont.dispose();
     }
 }

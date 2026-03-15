@@ -136,13 +136,18 @@ public class PlayScreen implements Screen {
 
     private void handleInput(float delta){
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
-            mario.getBody().applyLinearImpulse(new Vector2(0, 6f), mario.getBody().getWorldCenter(), true);
+            mario.getBody().applyLinearImpulse(new Vector2(0, GameConfig.MARIO_JUMP_SPEED),
+                mario.getBody().getWorldCenter(), true);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && mario.getBody().getLinearVelocity().x <= 2f){
-            mario.getBody().applyLinearImpulse(new Vector2(0.1f, 0f), mario.getBody().getWorldCenter(), true);
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)
+            && mario.getBody().getLinearVelocity().x <= GameConfig.MARIO_MAX_SPEED){
+            mario.getBody().applyLinearImpulse(new Vector2(GameConfig.MARIO_HORIZONTAL_ACCELERATION, 0f),
+                mario.getBody().getWorldCenter(), true);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && mario.getBody().getLinearVelocity().x >= -2f){
-            mario.getBody().applyLinearImpulse(new Vector2(-0.1f, 0f), mario.getBody().getWorldCenter(), true);
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)
+            && mario.getBody().getLinearVelocity().x >= -GameConfig.MARIO_MAX_SPEED){
+            mario.getBody().applyLinearImpulse(new Vector2(-GameConfig.MARIO_HORIZONTAL_ACCELERATION, 0f),
+                mario.getBody().getWorldCenter(), true);
         }
     }
 
