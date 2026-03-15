@@ -21,6 +21,7 @@ import de.wiedel.mario.assets.AssetDescriptors;
 import de.wiedel.mario.config.GameConfig;
 import de.wiedel.mario.entities.Mario;
 import de.wiedel.mario.scenes.Hud;
+import de.wiedel.mario.tools.B2WorldCreator;
 
 public class PlayScreen implements Screen {
 
@@ -48,8 +49,8 @@ public class PlayScreen implements Screen {
         batch = game.getBatch();
         assetManager = game.getAssetManager();
         gameCam = new OrthographicCamera();
-        gameViewport = new FitViewport(GameConfig.V_WIDTH /1,
-            GameConfig.V_HEIGHT /1, gameCam);
+        gameViewport = new FitViewport(GameConfig.V_WIDTH ,
+            GameConfig.V_HEIGHT, gameCam);
 
         hud = new Hud(batch);
 
@@ -60,77 +61,11 @@ public class PlayScreen implements Screen {
         world = new World(new Vector2(0, -9.81f), true);
         debugRenderer = new Box2DDebugRenderer();
 
+        new B2WorldCreator(world, map);
+
         mario = new Mario(world);
 
-        // vorübergehender Code
-        BodyDef bdef = new BodyDef();
-        PolygonShape shape = new PolygonShape();
-        FixtureDef fdef = new FixtureDef();
-        Body body;
 
-        // create ground bodies and fixtures
-        for (MapObject object : map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-
-            bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.UNIT_SCALE,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.UNIT_SCALE);
-
-            body = world.createBody(bdef);
-
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.UNIT_SCALE,
-                rect.getHeight() / 2 / GameConfig.UNIT_SCALE);
-            fdef.shape = shape;
-            body.createFixture(fdef);
-        }
-
-        // create pipe bodys and fixtures
-        for (MapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-
-            bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.UNIT_SCALE,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.UNIT_SCALE);
-
-            body = world.createBody(bdef);
-
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.UNIT_SCALE,
-                rect.getHeight() / 2 / GameConfig.UNIT_SCALE);
-            fdef.shape = shape;
-            body.createFixture(fdef);
-        }
-
-        // create brick bodys and fixtures
-        for (MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-
-            bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.UNIT_SCALE,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.UNIT_SCALE);
-
-            body = world.createBody(bdef);
-
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.UNIT_SCALE,
-                rect.getHeight() / 2 / GameConfig.UNIT_SCALE);
-            fdef.shape = shape;
-            body.createFixture(fdef);
-        }
-
-        // create coin bodys and fixtures
-        for (MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-
-            bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.UNIT_SCALE,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.UNIT_SCALE);
-
-            body = world.createBody(bdef);
-
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.UNIT_SCALE,
-                rect.getHeight() / 2 / GameConfig.UNIT_SCALE);
-            fdef.shape = shape;
-            body.createFixture(fdef);
-        }
     }
 
     @Override
@@ -202,6 +137,10 @@ public class PlayScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        map.dispose();
+        mapRenderer.dispose();
+        world.dispose();
+        debugRenderer.dispose();
+        hud.dispose();
     }
 }

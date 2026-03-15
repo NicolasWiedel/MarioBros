@@ -7,11 +7,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import de.wiedel.mario.config.GameConfig;
 
-public class Hud {
+public class Hud implements Disposable {
     private Stage stage;
     private Viewport hudViewport;
 
@@ -31,7 +32,8 @@ public class Hud {
         timeCount = 0;
         score = 0;
 
-        hudViewport = new FitViewport(GameConfig.V_WIDTH, GameConfig.V_HEIGHT, new OrthographicCamera());
+        hudViewport = new FitViewport(GameConfig.V_WIDTH * GameConfig.UNIT_SCALE,
+            GameConfig.V_HEIGHT * GameConfig.UNIT_SCALE, new OrthographicCamera());
         stage = new Stage(hudViewport, batch);
 
         Table table = new Table();
@@ -58,5 +60,10 @@ public class Hud {
 
     public Stage getStage() {
         return stage;
+    }
+
+    @Override
+    public void dispose() {
+        stage.dispose();
     }
 }
