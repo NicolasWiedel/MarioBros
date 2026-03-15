@@ -48,13 +48,13 @@ public class PlayScreen implements Screen {
         batch = game.getBatch();
         assetManager = game.getAssetManager();
         gameCam = new OrthographicCamera();
-        gameViewport = new FitViewport(GameConfig.V_WIDTH / GameConfig.PPM,
-            GameConfig.V_HEIGHT / GameConfig.PPM, gameCam);
+        gameViewport = new FitViewport(GameConfig.V_WIDTH /1,
+            GameConfig.V_HEIGHT /1, gameCam);
 
         hud = new Hud(batch);
 
         map = assetManager.get(AssetDescriptors.LEVEL_1);
-        mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / GameConfig.PPM);
+        mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / GameConfig.UNIT_SCALE);
         gameCam.position.set(gameViewport.getWorldWidth() / 2f, gameViewport.getWorldHeight() / 2f, 0);
 
         world = new World(new Vector2(0, -9.81f), true);
@@ -73,12 +73,13 @@ public class PlayScreen implements Screen {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.PPM,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.PPM);
+            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.UNIT_SCALE,
+                (rect.getY() + rect.getHeight() / 2) / GameConfig.UNIT_SCALE);
 
             body = world.createBody(bdef);
 
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.PPM, rect.getHeight() / 2 / GameConfig.PPM);
+            shape.setAsBox(rect.getWidth() / 2 / GameConfig.UNIT_SCALE,
+                rect.getHeight() / 2 / GameConfig.UNIT_SCALE);
             fdef.shape = shape;
             body.createFixture(fdef);
         }
@@ -88,12 +89,13 @@ public class PlayScreen implements Screen {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.PPM,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.PPM);
+            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.UNIT_SCALE,
+                (rect.getY() + rect.getHeight() / 2) / GameConfig.UNIT_SCALE);
 
             body = world.createBody(bdef);
 
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.PPM, rect.getHeight() / 2 / GameConfig.PPM);
+            shape.setAsBox(rect.getWidth() / 2 / GameConfig.UNIT_SCALE,
+                rect.getHeight() / 2 / GameConfig.UNIT_SCALE);
             fdef.shape = shape;
             body.createFixture(fdef);
         }
@@ -103,12 +105,13 @@ public class PlayScreen implements Screen {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.PPM,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.PPM);
+            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.UNIT_SCALE,
+                (rect.getY() + rect.getHeight() / 2) / GameConfig.UNIT_SCALE);
 
             body = world.createBody(bdef);
 
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.PPM, rect.getHeight() / 2 / GameConfig.PPM);
+            shape.setAsBox(rect.getWidth() / 2 / GameConfig.UNIT_SCALE,
+                rect.getHeight() / 2 / GameConfig.UNIT_SCALE);
             fdef.shape = shape;
             body.createFixture(fdef);
         }
@@ -118,12 +121,13 @@ public class PlayScreen implements Screen {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.PPM,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.PPM);
+            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.UNIT_SCALE,
+                (rect.getY() + rect.getHeight() / 2) / GameConfig.UNIT_SCALE);
 
             body = world.createBody(bdef);
 
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.PPM, rect.getHeight() / 2 / GameConfig.PPM);
+            shape.setAsBox(rect.getWidth() / 2 / GameConfig.UNIT_SCALE,
+                rect.getHeight() / 2 / GameConfig.UNIT_SCALE);
             fdef.shape = shape;
             body.createFixture(fdef);
         }

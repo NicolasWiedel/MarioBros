@@ -9,14 +9,14 @@ public class GameConfig {
     public static final int WIDTH = 1200;
     public static final int HEIGHT = 624;
 
-    public static final int V_WIDTH = 400;
-    public static final int V_HEIGHT = 208;
-    public static final float PPM = 100;
+    public static final int V_WIDTH = 25; //400
+    public static final int V_HEIGHT = 13; // 208
+    public static final float UNIT_SCALE = 16f;
 
-    public static final float MARIO_START_X = 32f;
-    public static final float MARIO_START_Y = 50f;
+    public static final float MARIO_START_X = 3f;
+    public static final float MARIO_START_Y = 5f;
     public static final float MARIO_RADIUS = 5f;
-    public static final float MARIO_JUMP_SPEED = 4f;
-    public static final float MARIO_MAX_SPEED = 1f;
+    public static final float MARIO_JUMP_SPEED = 10f;
+    public static final float MARIO_MAX_SPEED = 2f;
     public static final float MARIO_HORIZONTAL_ACCELERATION = 0.1f;
 }
