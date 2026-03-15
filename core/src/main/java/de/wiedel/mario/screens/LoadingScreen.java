@@ -9,14 +9,13 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.utils.ScreenUtils;
-import de.wiedel.mario.Mario;
+import de.wiedel.mario.MarioGame;
 import de.wiedel.mario.assets.AssetDescriptors;
-import de.wiedel.mario.assets.Assets;
 import de.wiedel.mario.config.GameConfig;
 
 public class LoadingScreen implements Screen {
 
-    private Mario  game;
+    private MarioGame game;
     private final SpriteBatch batch;
     private final AssetManager assetManager;
     private final BitmapFont defaultFont;
@@ -26,7 +25,7 @@ public class LoadingScreen implements Screen {
 
     private float timer;
 
-    public LoadingScreen(Mario game){
+    public LoadingScreen(MarioGame game){
         this.game = game;
         batch = game.getBatch();
         assetManager = game.getAssetManager();

@@ -2,7 +2,7 @@ package de.wiedel.mario.lwjgl3;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import de.wiedel.mario.Mario;
+import de.wiedel.mario.MarioGame;
 import de.wiedel.mario.config.GameConfig;
 
 /** Launches the desktop (LWJGL3) application. */
@@ -13,7 +13,7 @@ public class Lwjgl3Launcher {
     }
 
     private static Lwjgl3Application createApplication() {
-        return new Lwjgl3Application(new Mario(), getDefaultConfiguration());
+        return new Lwjgl3Application(new MarioGame(), getDefaultConfiguration());
     }
 
     private static Lwjgl3ApplicationConfiguration getDefaultConfiguration() {

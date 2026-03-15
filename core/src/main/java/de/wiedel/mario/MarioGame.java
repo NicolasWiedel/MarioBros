@@ -4,9 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import de.wiedel.mario.screens.LoadingScreen;
-import de.wiedel.mario.screens.PlayScreen;
 
-public class Mario extends Game {
+public class MarioGame extends Game {
 
     private SpriteBatch batch;
     private AssetManager assetManager;
