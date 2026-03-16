@@ -16,13 +16,14 @@ public class Mario extends Sprite {
 
     private void defineMario(){
         BodyDef bdef = new BodyDef();
-        bdef.position.set(GameConfig.MARIO_START_X, GameConfig.MARIO_START_Y);
+        bdef.position.set(GameConfig.MARIO_START_X / GameConfig.PPM,
+            GameConfig.MARIO_START_Y / GameConfig.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         body = world.createBody(bdef);
 
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(GameConfig.MARIO_RADIUS);
+        shape.setRadius(GameConfig.MARIO_RADIUS / GameConfig.PPM);
 
         fdef.shape = shape;
         body.createFixture(fdef);

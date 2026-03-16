@@ -32,8 +32,7 @@ public class Hud implements Disposable {
         timeCount = 0;
         score = 0;
 
-        hudViewport = new FitViewport(GameConfig.V_WIDTH * GameConfig.UNIT_SCALE,
-            GameConfig.V_HEIGHT * GameConfig.UNIT_SCALE, new OrthographicCamera());
+        hudViewport = new FitViewport(GameConfig.V_WIDTH, GameConfig.V_HEIGHT, new OrthographicCamera());
         stage = new Stage(hudViewport, batch);
 
         Table table = new Table();

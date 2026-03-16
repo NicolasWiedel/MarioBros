@@ -60,13 +60,13 @@ public class PlayScreen implements Screen {
         batch = game.getBatch();
         assetManager = game.getAssetManager();
         gameCam = new OrthographicCamera();
-        gameViewport = new FitViewport(GameConfig.V_WIDTH ,
-            GameConfig.V_HEIGHT, gameCam);
+        gameViewport = new FitViewport(GameConfig.V_WIDTH / GameConfig.PPM,
+            GameConfig.V_HEIGHT / GameConfig.PPM, gameCam);
 
         hud = new Hud(batch);
 
         map = assetManager.get(AssetDescriptors.LEVEL_1);
-        mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / GameConfig.UNIT_SCALE);
+        mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / GameConfig.PPM);
         gameCam.position.set(gameViewport.getWorldWidth() / 2f, gameViewport.getWorldHeight() / 2f, 0);
 
         world = new World(new Vector2(0, -9.81f), true);

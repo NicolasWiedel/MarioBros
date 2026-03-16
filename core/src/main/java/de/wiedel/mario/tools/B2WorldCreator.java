@@ -22,13 +22,13 @@ public class B2WorldCreator {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.UNIT_SCALE,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.UNIT_SCALE);
+            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.PPM,
+                (rect.getY() + rect.getHeight() / 2) / GameConfig.PPM);
 
             body = world.createBody(bdef);
 
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.UNIT_SCALE,
-                rect.getHeight() / 2 / GameConfig.UNIT_SCALE);
+            shape.setAsBox(rect.getWidth() / 2 / GameConfig.PPM,
+                rect.getHeight() / 2 / GameConfig.PPM);
             fdef.shape = shape;
             body.createFixture(fdef);
         }
@@ -38,13 +38,13 @@ public class B2WorldCreator {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.UNIT_SCALE,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.UNIT_SCALE);
+            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.PPM,
+                (rect.getY() + rect.getHeight() / 2) / GameConfig.PPM);
 
             body = world.createBody(bdef);
 
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.UNIT_SCALE,
-                rect.getHeight() / 2 / GameConfig.UNIT_SCALE);
+            shape.setAsBox(rect.getWidth() / 2 / GameConfig.PPM,
+                rect.getHeight() / 2 / GameConfig.PPM);
             fdef.shape = shape;
             body.createFixture(fdef);
         }
@@ -54,13 +54,13 @@ public class B2WorldCreator {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.UNIT_SCALE,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.UNIT_SCALE);
+            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.PPM,
+                (rect.getY() + rect.getHeight() / 2) / GameConfig.PPM);
 
             body = world.createBody(bdef);
 
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.UNIT_SCALE,
-                rect.getHeight() / 2 / GameConfig.UNIT_SCALE);
+            shape.setAsBox(rect.getWidth() / 2 / GameConfig.PPM,
+                rect.getHeight() / 2 / GameConfig.PPM);
             fdef.shape = shape;
             body.createFixture(fdef);
         }
@@ -70,13 +70,13 @@ public class B2WorldCreator {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.UNIT_SCALE,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.UNIT_SCALE);
+            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.PPM,
+                (rect.getY() + rect.getHeight() / 2) / GameConfig.PPM);
 
             body = world.createBody(bdef);
 
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.UNIT_SCALE,
-                rect.getHeight() / 2 / GameConfig.UNIT_SCALE);
+            shape.setAsBox(rect.getWidth() / 2 / GameConfig.PPM,
+                rect.getHeight() / 2 / GameConfig.PPM);
             fdef.shape = shape;
             body.createFixture(fdef);
         }

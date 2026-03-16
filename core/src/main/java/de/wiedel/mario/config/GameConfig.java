@@ -13,20 +13,20 @@ public class GameConfig {
     public static final int HEIGHT = 624;
 
     /** virtuelle Breite des Spiles */
-    public static final int V_WIDTH = 25; //400
+    public static final int V_WIDTH = 400; //400
     /** virtuelle Höhe des Spiels */
-    public static final int V_HEIGHT = 13;// 208
+    public static final int V_HEIGHT = 204;// 208
     /** UnitScale des Spiels, Pixelgröße einer virtuellen Einheit */
-    public static final float UNIT_SCALE = 16f;
+    public static final float PPM = 100f;
 
     public static final float TIME_STEP = 1 / 60f;
 
     /** x-Startposition unseres Spielers */
-    public static final float MARIO_START_X = 3f;
+    public static final float MARIO_START_X = 32f;
     /** y-Startposition unseres Spielers */
-    public static final float MARIO_START_Y = 5f;
+    public static final float MARIO_START_Y = 100f;
     /** Radius unseres Spielers */
-    public static final float MARIO_RADIUS = 0.5f;
+    public static final float MARIO_RADIUS = 6f;
     /** Sprungstärke unseres Spielers */
     public static final float MARIO_JUMP_SPEED = 4f;
     /** maximale horizontale Geschwindigkeit unseres Spielers */
