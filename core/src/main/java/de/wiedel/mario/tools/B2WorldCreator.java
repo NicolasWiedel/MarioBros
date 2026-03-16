@@ -6,6 +6,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import de.wiedel.mario.config.GameConfig;
+import de.wiedel.mario.entities.Brick;
+import de.wiedel.mario.entities.Coin;
 
 public class B2WorldCreator {
 
@@ -53,32 +55,14 @@ public class B2WorldCreator {
         for (MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
-            bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.PPM,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.PPM);
-
-            body = world.createBody(bdef);
-
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.PPM,
-                rect.getHeight() / 2 / GameConfig.PPM);
-            fdef.shape = shape;
-            body.createFixture(fdef);
+            new Brick(world, map, rect);
         }
 
         // create coin bodys and fixtures
         for (MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
-            bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth() / 2) / GameConfig.PPM,
-                (rect.getY() + rect.getHeight() / 2) / GameConfig.PPM);
-
-            body = world.createBody(bdef);
-
-            shape.setAsBox(rect.getWidth() / 2 / GameConfig.PPM,
-                rect.getHeight() / 2 / GameConfig.PPM);
-            fdef.shape = shape;
-            body.createFixture(fdef);
+            new Coin(world, map, rect);
         }
     }
 }
