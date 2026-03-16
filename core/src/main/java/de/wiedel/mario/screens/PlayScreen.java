@@ -25,23 +25,31 @@ import de.wiedel.mario.tools.B2WorldCreator;
 
 public class PlayScreen implements Screen {
 
+    /**
+     * Verweis auf die Game-Klasse für den Zugriff auf
+     * Spritebatch und AssetManager
+     */
     private MarioGame game;
-
     private SpriteBatch batch;
     private AssetManager assetManager;
 
+    /** die Hauptkamera und der entsprechende Viewport des Spiels **/
     private OrthographicCamera gameCam;
     private Viewport gameViewport;
 
+    /** Userinterface für Spielstand */
     private Hud hud;
 
+    /** die TiledMap des aktuellen Levels */
     private TiledMap map;
     private OrthogonalTiledMapRenderer mapRenderer;
 
+    /** Verweis auf unseren Spieler */
     private Mario mario;
 
-    // Box2D stuff
+    /** Box2D Welt */
     private World world;
+    /** DebugRenderer zur Visualisierung von Box2D Bodies */
     private Box2DDebugRenderer debugRenderer;
 
     public PlayScreen(MarioGame game){

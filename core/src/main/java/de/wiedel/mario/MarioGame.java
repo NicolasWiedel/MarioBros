@@ -7,7 +7,9 @@ import de.wiedel.mario.screens.LoadingScreen;
 
 public class MarioGame extends Game {
 
+    /** globaler SpriteBatch */
     private SpriteBatch batch;
+    /** globaler AssetManager */
     private AssetManager assetManager;
 
     @Override

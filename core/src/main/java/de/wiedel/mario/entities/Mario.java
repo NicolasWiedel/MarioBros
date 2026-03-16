@@ -22,7 +22,7 @@ public class Mario extends Sprite {
 
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(GameConfig.MARIO_RADIUS / GameConfig.UNIT_SCALE);
+        shape.setRadius(GameConfig.MARIO_RADIUS);
 
         fdef.shape = shape;
         body.createFixture(fdef);
