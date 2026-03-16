@@ -48,6 +48,8 @@ public class LoadingScreen implements Screen {
         loadingbarEmpty = assetManager.get(AssetDescriptors.LOADING_BAR_EMPTY);
         defaultFont = assetManager.get(AssetDescriptors.DEFAULT_FONT);
 
+        assetManager.load(AssetDescriptors.MARIO_AND_ENEMIES);
+
         assetManager.setLoader(TiledMap.class, new TmxMapLoader());
         assetManager.load(AssetDescriptors.LEVEL_1);
     }

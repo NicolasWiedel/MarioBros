@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -72,9 +73,11 @@ public class PlayScreen implements Screen {
 
         new B2WorldCreator(world, map);
 
-        mario = new Mario(world);
+        mario = new Mario(world, this);
+    }
 
-
+    public TextureAtlas getAtlas(){
+        return assetManager.get(AssetDescriptors.MARIO_AND_ENEMIES);
     }
 
     @Override
@@ -109,6 +112,8 @@ public class PlayScreen implements Screen {
 
         handleInput(delta);
 
+        mario.update(delta);
+
         gameCam.position.x = mario.getBody().getPosition().x;
 
         gameCam.update();
@@ -124,6 +129,11 @@ public class PlayScreen implements Screen {
         mapRenderer.render();
 
         debugRenderer.render(world, gameCam.combined);
+
+        game.getBatch().setProjectionMatrix(gameCam.combined);
+        game.getBatch().begin();
+        mario.draw(game.getBatch());
+        game.getBatch().end();
 
         batch.setProjectionMatrix(hud.getStage().getCamera().combined);
         hud.getStage().draw();
