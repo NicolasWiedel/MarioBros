@@ -19,6 +19,8 @@ public class GameConfig {
     /** UnitScale des Spiels, Pixelgröße einer virtuellen Einheit */
     public static final float UNIT_SCALE = 16f;
 
+    public static final float TIME_STEP = 1 / 60f;
+
     /** x-Startposition unseres Spielers */
     public static final float MARIO_START_X = 3f;
     /** y-Startposition unseres Spielers */
@@ -26,7 +28,7 @@ public class GameConfig {
     /** Radius unseres Spielers */
     public static final float MARIO_RADIUS = 0.5f;
     /** Sprungstärke unseres Spielers */
-    public static final float MARIO_JUMP_SPEED = 10f;
+    public static final float MARIO_JUMP_SPEED = 4f;
     /** maximale horizontale Geschwindigkeit unseres Spielers */
     public static final float MARIO_MAX_SPEED = 2f;
     /** horizontale Beschleunigung unseres Spielers */

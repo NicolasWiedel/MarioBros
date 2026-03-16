@@ -13,17 +13,26 @@ import de.wiedel.mario.MarioGame;
 import de.wiedel.mario.assets.AssetDescriptors;
 import de.wiedel.mario.config.GameConfig;
 
+/**
+ * Die Klasse dient dem Laden aller im Spiel verwendeter Ressourcen
+ */
 public class LoadingScreen implements Screen {
 
+    /** Verweis auf die Game-Klasse */
     private MarioGame game;
+    /** Verweis auf den SpriteBatch der Game-Klasse */
     private final SpriteBatch batch;
+    /** Verweis auf den AssetManager der Game-Klasse */
     private final AssetManager assetManager;
+    /** BitmapFont zur Darstellung des Ladezustands der Ressourcen*/
     private final BitmapFont defaultFont;
 
+    /** Rahmen der Ladestandsanzeige */
     private final Texture loadingbarFill;
+    /** Die Ladestandsanzeige */
     private final Texture loadingbarEmpty;
 
-    private float timer;
+    //private float timer;
 
     public LoadingScreen(MarioGame game){
         this.game = game;
@@ -45,7 +54,7 @@ public class LoadingScreen implements Screen {
 
     @Override
     public void show() {
-        timer = 0f;
+        // timer = 0f;
     }
 
     @Override

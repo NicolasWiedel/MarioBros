@@ -52,6 +52,9 @@ public class PlayScreen implements Screen {
     /** DebugRenderer zur Visualisierung von Box2D Bodies */
     private Box2DDebugRenderer debugRenderer;
 
+    private float accumulator;
+
+
     public PlayScreen(MarioGame game){
         this.game = game;
         batch = game.getBatch();
@@ -78,7 +81,7 @@ public class PlayScreen implements Screen {
 
     @Override
     public void show() {
-
+        accumulator = 0f;
     }
 
     private void handleInput(float delta){
@@ -99,9 +102,14 @@ public class PlayScreen implements Screen {
     }
 
     private void update(float delta){
-        handleInput(delta);
 
-        world.step(1/60f, 6, 2);
+        accumulator += delta;
+        while (accumulator >= GameConfig.TIME_STEP){
+            world.step(GameConfig.TIME_STEP, 6, 2);
+            accumulator -= GameConfig.TIME_STEP;
+        }
+
+        handleInput(delta);
 
         gameCam.position.x = mario.getBody().getPosition().x;
 

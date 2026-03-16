@@ -5,6 +5,9 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import de.wiedel.mario.screens.LoadingScreen;
 
+/**
+ * Haupt-Game-Klasse, die den SpriteBatch und den AssetManager hält
+ */
 public class MarioGame extends Game {
 
     /** globaler SpriteBatch */
