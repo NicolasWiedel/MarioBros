@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.utils.Array;
 import de.wiedel.mario.assets.RegionNames;
 import de.wiedel.mario.config.GameConfig;
 import de.wiedel.mario.screens.PlayScreen;
@@ -25,9 +26,9 @@ public class Mario extends Sprite {
     /** Bildausschnitt der stehenden Marios */
     private TextureRegion marioStand;
     /** Laufanimation */
-    private Animation marioRun;
+    private Animation<TextureRegion> marioRun;
     /** Springanimation*/
-    private Animation marioJump;
+    private Animation<TextureRegion> marioJump;
 
     private float stateTimer;
     private boolean runningRight;
@@ -41,6 +42,20 @@ public class Mario extends Sprite {
         stateTimer = 0f;
         runningRight = true;
 
+        // run Animation
+        Array<TextureRegion> frames = new Array<>();
+        for (int i = 1; i < 4; i++){
+            frames.add(new TextureRegion(getTexture(), i * 16, 10, 16, 16));
+        }
+        marioRun = new Animation<TextureRegion>(0.1f, frames);
+        frames.clear();
+
+        // jumop Animation
+        for (int i = 4; i < 6; i++){
+            frames.add(new TextureRegion(getTexture(), i * 16, 10, 16, 16));
+        }
+        marioJump = new Animation<TextureRegion>(0.1f, frames);
+
         defineMario();
         marioStand = new TextureRegion(getTexture(), 0, 10, 16 , 16);
         setBounds(0, 0, 16 /GameConfig.PPM, 16 / GameConfig.PPM);
@@ -51,6 +66,7 @@ public class Mario extends Sprite {
     public void update(float delta){
         setPosition(body.getPosition().x -getWidth() / 2,
             body.getPosition().y - getHeight() / 2);
+        setRegion(getFrame(delta));
     }
 
     /** Definition der Box2d Komponenten von Mario */
@@ -67,6 +83,56 @@ public class Mario extends Sprite {
 
         fdef.shape = shape;
         body.createFixture(fdef);
+    }
+
+    /** die Methode ermittelt den aktuellen Frame, der gezeichnet werden muss */
+    private TextureRegion getFrame(float delta){
+        currentState = getState();
+
+        TextureRegion region;
+        switch (currentState){
+            case JUMPING:
+                region = marioJump.getKeyFrame(stateTimer);
+                break;
+            case RUNNING:
+                region = marioRun.getKeyFrame(stateTimer, true);
+                break;
+            case FALLING:
+            case STANDING:
+            default:
+                region = marioStand;
+                break;
+        }
+        if((body.getLinearVelocity().x < 0 || !runningRight) && !region.isFlipX()){
+            region.flip(true, false);
+            runningRight = false;
+        }
+        else if((body.getLinearVelocity().x > 0 || runningRight) && region.isFlipX()){
+            region.flip(true, false);
+            runningRight = true;
+        }
+
+        stateTimer = currentState == previousState ? stateTimer + delta : 0;
+        previousState = currentState;
+        return region;
+    }
+
+    /** gibt den aktuellen Zustand Marios zurück */
+    public State getState(){
+        if (body.getLinearVelocity().y > 0
+            || (body.getLinearVelocity().y < 0
+            && previousState == State.JUMPING)){
+            return State.JUMPING;
+        }
+        else if (body.getLinearVelocity().y < 0){
+            return State.FALLING;
+        }
+        else if (body.getLinearVelocity().x != 0){
+            return State.RUNNING;
+        }
+        else {
+            return State.STANDING;
+        }
     }
 
     public Body getBody() {
