@@ -21,6 +21,7 @@ import de.wiedel.mario.config.GameConfig;
 import de.wiedel.mario.entities.Mario;
 import de.wiedel.mario.scenes.Hud;
 import de.wiedel.mario.tools.B2WorldCreator;
+import de.wiedel.mario.tools.WorldContactListener;
 
 public class PlayScreen implements Screen {
 
@@ -74,6 +75,8 @@ public class PlayScreen implements Screen {
         new B2WorldCreator(world, map);
 
         mario = new Mario(world, this);
+
+        world.setContactListener(new WorldContactListener());
     }
 
     public TextureAtlas getAtlas(){

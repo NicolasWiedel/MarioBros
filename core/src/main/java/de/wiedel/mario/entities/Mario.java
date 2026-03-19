@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import de.wiedel.mario.assets.RegionNames;
@@ -83,6 +84,13 @@ public class Mario extends Sprite {
 
         fdef.shape = shape;
         body.createFixture(fdef);
+
+        EdgeShape head = new EdgeShape();
+        head.set(new Vector2(-2 / GameConfig.PPM, 8 / GameConfig.PPM),
+            new Vector2(2 / GameConfig.PPM, 8 / GameConfig.PPM));
+        fdef.shape = head;
+        fdef.isSensor = true;
+        body.createFixture(fdef).setUserData("head");
     }
 
     /** die Methode ermittelt den aktuellen Frame, der gezeichnet werden muss */
