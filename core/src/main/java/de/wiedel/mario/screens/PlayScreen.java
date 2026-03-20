@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -52,6 +53,8 @@ public class PlayScreen implements Screen {
     /** DebugRenderer zur Visualisierung von Box2D Bodies */
     private Box2DDebugRenderer debugRenderer;
 
+    private Music music;
+
     private float accumulator;
 
 
@@ -72,11 +75,16 @@ public class PlayScreen implements Screen {
         world = new World(new Vector2(0, -9.81f), true);
         debugRenderer = new Box2DDebugRenderer();
 
-        new B2WorldCreator(world, map);
+        new B2WorldCreator(world, map, assetManager);
 
         mario = new Mario(world, this);
 
         world.setContactListener(new WorldContactListener());
+
+        music = assetManager.get(AssetDescriptors.MARIO_MUSIC);
+        music.setLooping(true);
+        music.setVolume(0.2f);
+        music.play();
     }
 
     public TextureAtlas getAtlas(){

@@ -1,5 +1,6 @@
 package de.wiedel.mario.tools;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -11,7 +12,11 @@ import de.wiedel.mario.entities.Coin;
 
 public class B2WorldCreator {
 
-    public B2WorldCreator(World world, TiledMap map){
+    private AssetManager assetManager;
+
+    public B2WorldCreator(World world, TiledMap map, AssetManager assetManager){
+
+        this.assetManager = assetManager;
 
         // vorübergehender Code
         BodyDef bdef = new BodyDef();
@@ -55,14 +60,14 @@ public class B2WorldCreator {
         for (MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
-            new Brick(world, map, rect);
+            new Brick(world, map, rect, assetManager);
         }
 
         // create coin bodys and fixtures
         for (MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
-            new Coin(world, map, rect);
+            new Coin(world, map, rect, assetManager);
         }
     }
 }

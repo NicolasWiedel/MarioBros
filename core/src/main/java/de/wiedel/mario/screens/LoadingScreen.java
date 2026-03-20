@@ -50,6 +50,17 @@ public class LoadingScreen implements Screen {
 
         assetManager.load(AssetDescriptors.MARIO_AND_ENEMIES);
 
+        assetManager.load(AssetDescriptors.MARIO_MUSIC);
+
+        assetManager.load(AssetDescriptors.BREAK_BLOCK);
+        assetManager.load(AssetDescriptors.BUMP);
+        assetManager.load(AssetDescriptors.COIN);
+        assetManager.load(AssetDescriptors.MARIO_DIE);
+        assetManager.load(AssetDescriptors.POWER_DOWN);
+        assetManager.load(AssetDescriptors.POWER_UP);
+        assetManager.load(AssetDescriptors.POWER_UP_SPAWN);
+        assetManager.load(AssetDescriptors.STOMP);
+
         assetManager.setLoader(TiledMap.class, new TmxMapLoader());
         assetManager.load(AssetDescriptors.LEVEL_1);
     }

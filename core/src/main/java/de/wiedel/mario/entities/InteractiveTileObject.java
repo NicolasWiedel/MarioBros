@@ -1,5 +1,6 @@
 package de.wiedel.mario.entities;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -12,13 +13,15 @@ public abstract class InteractiveTileObject{
     protected TiledMap map;
     protected TiledMapTile tile;
     protected Rectangle bounds;
+    protected AssetManager assetManager;
     protected Body body;
     protected Fixture fixture;
 
-    public InteractiveTileObject(World world, TiledMap map, Rectangle bounds){
+    public InteractiveTileObject(World world, TiledMap map, Rectangle bounds, AssetManager assetManager){
         this.world = world;
         this.map = map;
         this.bounds = bounds;
+        this.assetManager = assetManager;
 
         BodyDef bdef = new BodyDef();
         FixtureDef fdef = new FixtureDef();
