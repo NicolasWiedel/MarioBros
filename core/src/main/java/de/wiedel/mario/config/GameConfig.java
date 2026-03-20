@@ -33,4 +33,11 @@ public class GameConfig {
     public static final float MARIO_MAX_SPEED = 2f;
     /** horizontale Beschleunigung unseres Spielers */
     public static final float MARIO_HORIZONTAL_ACCELERATION = 0.1f;
+
+    /** Kategorie - Bits für Fixtures */
+    public static final short DEFAULT_BIT = 1;
+    public static final short MARIO_BIT = 2;
+    public static final short BRICK_BIT = 4;
+    public static final short COIN_BIT = 8;
+    public static final short DESTROYED_BIT = 16;
 }
