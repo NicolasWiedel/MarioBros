@@ -5,6 +5,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.World;
 import de.wiedel.mario.config.GameConfig;
+import de.wiedel.mario.scenes.Hud;
 
 public class Brick extends InteractiveTileObject {
 
@@ -19,5 +20,6 @@ public class Brick extends InteractiveTileObject {
         Gdx.app.log("Brick", "Head hits brick!");
         setCategoryFilter(GameConfig.DESTROYED_BIT);
         getCell().setTile(null);
+        Hud.addScore(200);
     }
 }

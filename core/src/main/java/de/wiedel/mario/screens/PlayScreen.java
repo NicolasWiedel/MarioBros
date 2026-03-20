@@ -116,6 +116,7 @@ public class PlayScreen implements Screen {
         handleInput(delta);
 
         mario.update(delta);
+        hud.update(delta);
 
         gameCam.position.x = mario.getBody().getPosition().x;
 
