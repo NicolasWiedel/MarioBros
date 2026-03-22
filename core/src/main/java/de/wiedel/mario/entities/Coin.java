@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import de.wiedel.mario.config.GameConfig;
 import de.wiedel.mario.scenes.Hud;
 
+/** Klasse, die die einzelnen Coins beschreibt */
 public class Coin extends InteractiveTileObject {
 
     private static TiledMapTileSet tileSet;
@@ -21,6 +22,7 @@ public class Coin extends InteractiveTileObject {
         setCategoryFilter(GameConfig.COIN_BIT);
     }
 
+    /** Was passiert, wenn Mario mit seinem Kopf eine Coin trifft*/
     @Override
     public void onHeadHit() {
         Gdx.app.log("Coin", "Head hits coin!");

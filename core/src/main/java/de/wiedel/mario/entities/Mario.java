@@ -31,7 +31,9 @@ public class Mario extends Sprite {
     /** Springanimation*/
     private Animation<TextureRegion> marioJump;
 
+    /** Timer für die Animationen */
     private float stateTimer;
+    /** In welche Richtung läuft Mario? */
     private boolean runningRight;
 
     public Mario(World world, PlayScreen screen) {
@@ -145,6 +147,7 @@ public class Mario extends Sprite {
         }
     }
 
+    /** Getter für den Box2D Body von Mario */
     public Body getBody() {
         return body;
     }

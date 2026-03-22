@@ -15,6 +15,7 @@ public class MarioGame extends Game {
     /** globaler AssetManager */
     private AssetManager assetManager;
 
+    /** Erstellt den SpriteBatch und den AssetManager und deligiert zum nächsten Screen */
     @Override
     public void create() {
         batch = new SpriteBatch();
@@ -22,21 +23,25 @@ public class MarioGame extends Game {
         setScreen(new LoadingScreen(this));
     }
 
+    /** Ruft die render-Methode der Game-Klasse auf */
     @Override
     public void render() {
         super.render();
     }
 
+    /** Dispose setzt Ressourcen frei */
     @Override
     public void dispose() {
         batch.dispose();
         assetManager.dispose();
     }
 
+    /** Getter für den SpriteBatch */
     public SpriteBatch getBatch() {
         return batch;
     }
 
+    /** Getter für den AssetManager */
     public AssetManager getAssetManager() {
         return assetManager;
     }

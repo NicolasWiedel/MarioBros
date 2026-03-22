@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
+/** AssetDescriptors für die zu ladenden Assets */
 public class AssetDescriptors {
 
     public static final AssetDescriptor<BitmapFont> DEFAULT_FONT =

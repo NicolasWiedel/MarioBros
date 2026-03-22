@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import de.wiedel.mario.config.GameConfig;
 
+/** Mutterklasse der interaktiven GameObjects*/
 public abstract class InteractiveTileObject{
     protected World world;
     protected TiledMap map;
@@ -39,14 +40,17 @@ public abstract class InteractiveTileObject{
         fixture = body.createFixture(fdef);
     }
 
+    /** Wass passiert, wenn Marios Kopf ein Objekt dieser Klasse trifft */
     public abstract void onHeadHit();
 
+    /** Setzt den Category Filter für das Objekt */
     public void setCategoryFilter(short filterBit){
         Filter filter = new Filter();
         filter.categoryBits = filterBit;
         fixture.setFilterData(filter);
     }
 
+    /** In welcher Zelle befindet sich das Objekt */
     public TiledMapTileLayer.Cell getCell(){
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
         return layer.getCell((int) (body.getPosition().x * GameConfig.PPM / 16),

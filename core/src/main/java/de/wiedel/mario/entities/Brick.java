@@ -10,6 +10,7 @@ import de.wiedel.mario.assets.AssetDescriptors;
 import de.wiedel.mario.config.GameConfig;
 import de.wiedel.mario.scenes.Hud;
 
+/** Klasse, die die einzelnen Bricks beschreibt */
 public class Brick extends InteractiveTileObject {
 
     private Sound breakBlock;
@@ -21,6 +22,7 @@ public class Brick extends InteractiveTileObject {
         breakBlock = assetManager.get(AssetDescriptors.BREAK_BLOCK);
     }
 
+    /** Was passiert, wenn Mario mit seinem Kopf einen Brick trifft*/
     @Override
     public void onHeadHit() {
         Gdx.app.log("Brick", "Head hits brick!");

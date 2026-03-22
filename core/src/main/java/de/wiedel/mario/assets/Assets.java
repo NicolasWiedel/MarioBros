@@ -1,5 +1,6 @@
 package de.wiedel.mario.assets;
 
+/** Die Klasse speichert Konstanten für die Speicherpositionen der Assets */
 public class Assets {
 
     public static final String DEFAULT_FONT = "fonts/default.fnt";

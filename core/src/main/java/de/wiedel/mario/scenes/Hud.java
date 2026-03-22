@@ -12,7 +12,9 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import de.wiedel.mario.config.GameConfig;
 
+/** Hud für den PlayScreen */
 public class Hud implements Disposable {
+
     private Stage stage;
     private Viewport hudViewport;
 
