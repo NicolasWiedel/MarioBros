@@ -9,14 +9,17 @@ import com.badlogic.gdx.physics.box2d.*;
 import de.wiedel.mario.config.GameConfig;
 import de.wiedel.mario.entities.Brick;
 import de.wiedel.mario.entities.Coin;
+import de.wiedel.mario.screens.PlayScreen;
 
 public class B2WorldCreator {
 
     private AssetManager assetManager;
 
-    public B2WorldCreator(World world, TiledMap map, AssetManager assetManager){
+    public B2WorldCreator(PlayScreen playScreen, AssetManager assetManager){
 
         this.assetManager = assetManager;
+        World world = playScreen.getWorld();
+        TiledMap map = playScreen.getMap();
 
         // vorübergehender Code
         BodyDef bdef = new BodyDef();
@@ -60,14 +63,14 @@ public class B2WorldCreator {
         for (MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
-            new Brick(world, map, rect, assetManager);
+            new Brick(playScreen, rect, assetManager);
         }
 
         // create coin bodys and fixtures
         for (MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
-            new Coin(world, map, rect, assetManager);
+            new Coin(playScreen, rect, assetManager);
         }
     }
 }

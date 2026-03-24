@@ -7,6 +7,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import de.wiedel.mario.config.GameConfig;
+import de.wiedel.mario.screens.PlayScreen;
 
 /** Mutterklasse der interaktiven GameObjects*/
 public abstract class InteractiveTileObject{
@@ -18,9 +19,9 @@ public abstract class InteractiveTileObject{
     protected Body body;
     protected Fixture fixture;
 
-    public InteractiveTileObject(World world, TiledMap map, Rectangle bounds, AssetManager assetManager){
-        this.world = world;
-        this.map = map;
+    public InteractiveTileObject(PlayScreen playScreen, Rectangle bounds, AssetManager assetManager){
+        this.world = playScreen.getWorld();
+        this.map = playScreen.getMap();
         this.bounds = bounds;
         this.assetManager = assetManager;
 

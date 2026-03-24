@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.World;
 import de.wiedel.mario.config.GameConfig;
 import de.wiedel.mario.scenes.Hud;
+import de.wiedel.mario.screens.PlayScreen;
 
 /** Klasse, die die einzelnen Coins beschreibt */
 public class Coin extends InteractiveTileObject {
@@ -15,8 +16,8 @@ public class Coin extends InteractiveTileObject {
     private static TiledMapTileSet tileSet;
     private final int BLANK_COIN = 28;
 
-    public Coin(World world, TiledMap map, Rectangle bounds, AssetManager assetManager) {
-        super(world, map, bounds, assetManager);
+    public Coin(PlayScreen playScreen, Rectangle bounds, AssetManager assetManager) {
+        super(playScreen, bounds, assetManager);
         tileSet = map.getTileSets().getTileSet("tileset_gutter");
         fixture.setUserData(this);
         setCategoryFilter(GameConfig.COIN_BIT);

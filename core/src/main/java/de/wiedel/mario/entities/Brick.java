@@ -9,14 +9,15 @@ import com.badlogic.gdx.physics.box2d.World;
 import de.wiedel.mario.assets.AssetDescriptors;
 import de.wiedel.mario.config.GameConfig;
 import de.wiedel.mario.scenes.Hud;
+import de.wiedel.mario.screens.PlayScreen;
 
 /** Klasse, die die einzelnen Bricks beschreibt */
 public class Brick extends InteractiveTileObject {
 
     private Sound breakBlock;
 
-    public Brick(World world, TiledMap map, Rectangle bounds, AssetManager assetManager) {
-        super(world, map, bounds, assetManager);
+    public Brick(PlayScreen playScreen, Rectangle bounds, AssetManager assetManager) {
+        super(playScreen, bounds, assetManager);
         fixture.setUserData(this);
         setCategoryFilter(GameConfig.BRICK_BIT);
         breakBlock = assetManager.get(AssetDescriptors.BREAK_BLOCK);

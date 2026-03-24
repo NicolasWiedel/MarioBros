@@ -36,9 +36,9 @@ public class Mario extends Sprite {
     /** In welche Richtung läuft Mario? */
     private boolean runningRight;
 
-    public Mario(World world, PlayScreen screen) {
-        super(screen.getAtlas().findRegion(RegionNames.LITTLE_MARIO));
-        this.world = world;
+    public Mario(PlayScreen playScreen) {
+        super(playScreen.getAtlas().findRegion(RegionNames.LITTLE_MARIO));
+        this.world = playScreen.getWorld();
 
         currentState = State.STANDING;
         previousState = State.STANDING;

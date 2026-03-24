@@ -75,9 +75,9 @@ public class PlayScreen implements Screen {
         world = new World(new Vector2(0, -9.81f), true);
         debugRenderer = new Box2DDebugRenderer();
 
-        new B2WorldCreator(world, map, assetManager);
+        new B2WorldCreator(this, assetManager);
 
-        mario = new Mario(world, this);
+        mario = new Mario(this);
 
         world.setContactListener(new WorldContactListener());
 
@@ -169,6 +169,14 @@ public class PlayScreen implements Screen {
     @Override
     public void hide() {
 
+    }
+
+    public TiledMap getMap() {
+        return map;
+    }
+
+    public World getWorld() {
+        return world;
     }
 
     @Override
