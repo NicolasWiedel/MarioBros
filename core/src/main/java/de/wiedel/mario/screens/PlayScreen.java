@@ -19,6 +19,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import de.wiedel.mario.MarioGame;
 import de.wiedel.mario.assets.AssetDescriptors;
 import de.wiedel.mario.config.GameConfig;
+import de.wiedel.mario.entities.Goomba;
 import de.wiedel.mario.entities.Mario;
 import de.wiedel.mario.scenes.Hud;
 import de.wiedel.mario.tools.B2WorldCreator;
@@ -47,6 +48,8 @@ public class PlayScreen implements Screen {
 
     /** Verweis auf unseren Spieler */
     private Mario mario;
+    // TODO
+    private Goomba goomba;
 
     /** Box2D Welt */
     private World world;
@@ -85,6 +88,9 @@ public class PlayScreen implements Screen {
         music.setLooping(true);
         music.setVolume(0.2f);
         music.play();
+
+        // TODO
+        goomba = new Goomba(this, .32f, .32f);
     }
 
     public TextureAtlas getAtlas(){
@@ -124,6 +130,8 @@ public class PlayScreen implements Screen {
         handleInput(delta);
 
         mario.update(delta);
+        // TODO
+        goomba.update(delta);
         hud.update(delta);
 
         gameCam.position.x = mario.getBody().getPosition().x;
@@ -145,6 +153,8 @@ public class PlayScreen implements Screen {
         game.getBatch().setProjectionMatrix(gameCam.combined);
         game.getBatch().begin();
         mario.draw(game.getBatch());
+        // TODO
+        goomba.draw(game.getBatch());
         game.getBatch().end();
 
         batch.setProjectionMatrix(hud.getStage().getCamera().combined);

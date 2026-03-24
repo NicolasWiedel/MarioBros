@@ -1,6 +1,5 @@
 package de.wiedel.mario.entities;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -84,7 +83,9 @@ public class Mario extends Sprite {
         CircleShape shape = new CircleShape();
         shape.setRadius(GameConfig.MARIO_RADIUS / GameConfig.PPM);
         fdef.filter.categoryBits = GameConfig.MARIO_BIT;
-        fdef.filter.maskBits = GameConfig.DEFAULT_BIT | GameConfig.COIN_BIT |GameConfig.BRICK_BIT;
+        fdef.filter.maskBits = GameConfig.GROUND_BIT
+            | GameConfig.COIN_BIT | GameConfig.BRICK_BIT
+            | GameConfig.ENEMY_BIT | GameConfig.OBJECT_BIT;
 
         fdef.shape = shape;
         body.createFixture(fdef);
