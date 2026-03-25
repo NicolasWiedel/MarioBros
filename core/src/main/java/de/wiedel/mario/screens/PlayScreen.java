@@ -90,7 +90,7 @@ public class PlayScreen implements Screen {
         music.play();
 
         // TODO
-        goomba = new Goomba(this, .32f, .32f);
+        goomba = new Goomba(this, .64f, .32f);
     }
 
     public TextureAtlas getAtlas(){

@@ -85,7 +85,8 @@ public class Mario extends Sprite {
         fdef.filter.categoryBits = GameConfig.MARIO_BIT;
         fdef.filter.maskBits = GameConfig.GROUND_BIT
             | GameConfig.COIN_BIT | GameConfig.BRICK_BIT
-            | GameConfig.ENEMY_BIT | GameConfig.OBJECT_BIT;
+            | GameConfig.ENEMY_BIT | GameConfig.OBJECT_BIT
+            | GameConfig.ENEMY_HEAD_BIT;
 
         fdef.shape = shape;
         body.createFixture(fdef);
